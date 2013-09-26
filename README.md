@@ -12,6 +12,11 @@ heroku app:create
 git push heroku master
 ```
 
+## Release history
+
+* 0.0.2 - Add date parsing
+* 0.0.1 - Initial release
+
 ## License
 
 Copyright © 2013 Kevin McCarthy

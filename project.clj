@@ -1,4 +1,4 @@
-(defproject tal "0.0.1"
+(defproject tal "0.0.2"
   :description "A RSS feed of recent This American Life Episodes"
   :url "https://github.com/kevin1024/tal"
   :main tal.core
