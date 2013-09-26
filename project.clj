@@ -1,9 +1,9 @@
 (defproject tal "0.0.1"
-  :description "Access more TAL podcast episodes"
+  :description "A RSS feed of recent This American Life Episodes"
   :url "https://github.com/kevin1024/tal"
   :main tal.core
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :license {:name "The MIT License"
+            :url "http://opensource.org/licenses/MIT"}
   :uberjar-name "tal-standalone.jar"
   :min-lein-version "2.0.0"
   :dependencies [

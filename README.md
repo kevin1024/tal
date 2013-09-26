@@ -5,11 +5,15 @@ an RSS feed with the most recent episodes in it.
 
 ## Usage
 
-FIXME
+Run this on Heroku. Clone the repo and then
+
+```bash
+heroku app:create
+git push heroku master
+```
 
 ## License
 
 Copyright © 2013 Kevin McCarthy
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the MIT license
