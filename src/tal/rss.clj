@@ -22,6 +22,7 @@
         :title (str (:name episode) " (#" (:number episode) ")")
         :link (:url episode)
         :description (:description episode)
+        :enclosure (:url episode)
       }
     )
   )
