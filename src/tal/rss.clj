@@ -16,7 +16,7 @@
 
 (defn rss-definition []
   (concat
-    [{:title "TAL Bigger RSS Feed" :description "More epiaodes in a feed!" :link "http://github.com/kevin1024/tal/"}]
+    [{:title "TAL Bigger RSS Feed" :description "This American Life Podcast Uberfeed" :link "http://github.com/kevin1024/tal/"}]
     (for [episode (episode-list)]
       {
         :title (str (:name episode) " (#" (:number episode) ")")
