@@ -7,6 +7,5 @@
    :headers {"Content-Type" "application/rss+xml"}
    :body    (tal.rss/main)})
 
-(defn -main
-  []
-  (httpkit/run-server app {:port 8080}))
+(defn -main [port]
+  (httpkit/run-server app {:port (Integer. port)}))
