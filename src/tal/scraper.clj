@@ -29,12 +29,19 @@
   (apply clojure.string/trim (:content (first (enlive/select episode [:div.content]))))
 )
 
+(defn parse-date [date]
+  (.parse (java.text.SimpleDateFormat. "MM.dd.yyyy") date ))
+
+(defn extract-date [episode]
+  (parse-date (first (:content (first (enlive/select episode [:.date]))))))
+
 (defn extract-episode [episode]
   {
    :name (extract-name episode)
    :number (extract-episode-number episode)
    :image (extract-image episode)
    :description (extract-description episode)
+   :date (extract-date episode)
   }
 )
 

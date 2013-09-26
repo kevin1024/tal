@@ -23,6 +23,7 @@
         :link (:url episode)
         :description (:description episode)
         :enclosure (:url episode)
+        :pubDate (:date episode)
       }
     )
   )
