@@ -6,7 +6,17 @@ A Clojure program that scrapes the This American Life site to generate an RSS fe
 
 ## Usage
 
-Run this on Heroku. Clone the repo and then
+Run locally:
+
+```bash
+lein run 8080
+```
+
+This will start a server on your local machine, port 8080.
+
+## Deploy
+
+This project is intended to be deployed on Heroku.
 
 ```bash
 heroku app:create
