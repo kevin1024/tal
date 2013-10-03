@@ -1,12 +1,18 @@
 (ns tal.scraper
-  (:require [net.cgrand.enlive-html :as enlive]))
+  (:require [net.cgrand.enlive-html :as enlive])
+  (:require [org.httpkit.client :as http]))
 
 (def base-url "http://www.thisamericanlife.org/radio-archives")
 
 (def episode-list-selector [:#archive-episodes :div.episode-archive ])
 
 (defn fetch-url [url]
-    (enlive/html-resource (java.net.URL. url)))
+  (enlive/html-resource (java.net.URL. url)))
+
+(defn url-exists [url]
+  (let [{:keys [status headers body error] :as resp} @(http/head url)]
+  (= status 200)
+))
 
 (defn extract-name-field [episode]
   "extract the field that has both the name and number, used by extract-name and extract-episode-number"
@@ -35,6 +41,10 @@
 (defn extract-date [episode]
   (parse-date (first (:content (first (enlive/select episode [:.date]))))))
 
+(defn episode-mp3-url [episode-number]
+  (str "http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/" episode-number ".mp3")
+)
+
 (defn extract-episode [episode]
   {
    :name (extract-name episode)
@@ -42,9 +52,24 @@
    :image (extract-image episode)
    :description (extract-description episode)
    :date (extract-date episode)
+   :url (episode-mp3-url (extract-episode-number episode))
   }
 )
 
+(defn filter-out-unpublished-episodes [episodes]
+  "check the first episode's URL to make sure it exists"
+  (if (url-exists (:url (first episodes)))
+    episodes
+    (rest episodes)
+  )
+)
+
+(defn all-episodes []
+  "returns a list of all scraped episodes, which might include unpublished episodes"
+  (map extract-episode (enlive/select (fetch-url base-url) episode-list-selector))
+)
+
+
 (defn episode-list []
-    (map extract-episode (enlive/select (fetch-url base-url) episode-list-selector))
+    (filter-out-unpublished-episodes (all-episodes))
 )

@@ -15,6 +15,7 @@ git push heroku master
 
 ## Release history
 
+* 0.0.3 - Don't return the first epsidode if it hasn't been published yet
 * 0.0.2 - Add date parsing
 * 0.0.1 - Initial release
 

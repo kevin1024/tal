@@ -1,6 +1,6 @@
 (ns tal.core)
 (load "rss")
-(require '[org.httpkit.server :as httpkit])
+(require [org.httpkit.server :as httpkit])
 
 (defn app [req]
   {:status  200
